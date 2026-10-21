@@ -95,6 +95,7 @@
     $('count').textContent = list.length ? `${list.length.toLocaleString('ar-EG')} منتج` : '';
     if (!list.length) showMsg(state.products.length ? 'مفيش منتجات مطابقة للبحث.' : 'مفيش منتجات حاليا، ارجع تاني قريب!');
     else $('msg').hidden = true;
+    syncAds(list.length > 0);
   }
 
   /* ---------- modal ---------- */
@@ -224,6 +225,12 @@
   };
 
   /* ---------- AdSense (يشتغل تلقائي لما تملا ADSENSE_CLIENT في config.js) ---------- */
+  // سياسة أدسنس: ممنوع إعلانات على صفحة فاضية أو من غير محتوى، فبنعرضها بس لما فيه منتجات ظاهرة
+  let adsStarted = false;
+  function syncAds(hasContent) {
+    if (hasContent && !adsStarted) { adsStarted = true; initAds(); }
+    if (adsStarted) ['adTop', 'adBottom'].forEach((id) => { const b = $(id); if (b.firstChild) b.hidden = !hasContent; });
+  }
   function initAds() {
     if (!/^ca-pub-\d{10,20}$/.test(C.ADSENSE_CLIENT || '')) return;
     const s = h('script', { async: '', src: `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${C.ADSENSE_CLIENT}`, crossorigin: 'anonymous' });
@@ -237,6 +244,5 @@
     });
   }
 
-  initAds();
   load();
 })();

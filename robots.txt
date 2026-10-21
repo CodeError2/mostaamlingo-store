@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# غيّر الرابط ده برابط موقعك الحقيقي
-Sitemap: https://YOUR-STORE.pages.dev/sitemap.xml
+Sitemap: https://codeerror2.github.io/mostaamlingo-store/sitemap.xml

@@ -1,17 +1,42 @@
-// سكربت الصفحات الثابتة (من نحن / اتصل بنا / ...)
+// سكربت الصفحات الثابتة (من نحن / اتصل بنا / المدونة ...)
 (() => {
   const C = window.STORE_CONFIG || {};
   const y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
-  document.querySelectorAll('.upd').forEach((e) => {
-    e.textContent = new Date().toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' });
-  });
+
   const wa = document.getElementById('wa');
   if (wa) wa.href = `https://wa.me/${encodeURIComponent(C.WHATSAPP || '')}`;
+
+  // الإيميل: يظهر فقط لو اتحط في config.js
   const mail = document.getElementById('mail');
-  if (mail && !C.CONTACT_EMAIL && mail.previousElementSibling) { mail.parentElement.hidden = true; if (mail.parentElement.previousElementSibling) mail.parentElement.previousElementSibling.hidden = true; }
-  if (mail && /^[^\s@<>"']+@[^\s@<>"']+$/.test(C.CONTACT_EMAIL || '')) {
-    mail.textContent = C.CONTACT_EMAIL;
-    mail.href = `mailto:${C.CONTACT_EMAIL}`;
+  if (mail) {
+    if (/^[^\s@<>"']+@[^\s@<>"']+$/.test(C.CONTACT_EMAIL || '')) {
+      mail.textContent = C.CONTACT_EMAIL;
+      mail.href = `mailto:${C.CONTACT_EMAIL}`;
+    } else {
+      const sec = mail.closest('section');
+      if (sec) sec.hidden = true;
+    }
+  }
+
+  // تنويه الكوكيز في كل الصفحات (الصفحة الرئيسية بيها تنويهها الخاص)
+  if (!document.getElementById('cookie')) {
+    let ok = false;
+    try { ok = !!localStorage.getItem('cookie_ok'); } catch { /* ignore */ }
+    if (!ok) {
+      const box = document.createElement('div');
+      box.className = 'cookie';
+      const span = document.createElement('span');
+      span.append('الموقع بيستخدم ملفات تعريف الارتباط لتحسين التجربة وعرض إعلانات. ');
+      const a = document.createElement('a');
+      a.href = document.querySelector('a[href$="privacy.html"]')?.getAttribute('href') || 'privacy.html';
+      a.textContent = 'اعرف أكتر';
+      span.append(a);
+      const b = document.createElement('button');
+      b.textContent = 'تمام';
+      b.onclick = () => { box.remove(); try { localStorage.setItem('cookie_ok', '1'); } catch { /* ignore */ } };
+      box.append(span, b);
+      document.body.append(box);
+    }
   }
 })();
