@@ -84,7 +84,7 @@
     if (p.status === 'sold') ph.append(h('span', { class: 'ribbon', text: 'تم البيع' }));
     const el = h('button', { class: 'card' + (p.status === 'sold' ? ' sold' : ''), type: 'button' },
       ph,
-      h('div', { class: 'b' }, h('h3', { text: p.title }), h('div', { class: 'p', text: money(p.price) }), h('div', { class: 'm', text: `${p.condition} • ${p.category}` })));
+      h('div', { class: 'b' }, h('h3', { text: p.title }), h('div', { class: 'p', text: money(p.price) }), p.description ? h('p', { class: 'd', text: p.description }) : null, h('div', { class: 'm', text: `${p.condition} • ${p.category}` })));
     el.onclick = () => openModal(p);
     return el;
   }
