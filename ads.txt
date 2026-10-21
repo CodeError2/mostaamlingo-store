@@ -1,0 +1,2 @@
+# بعد قبول الموقع في أدسنس: استبدل السطر ده بسطرك من حسابك (Ads > ads.txt)
+# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مستعملينجو | أجهزة وإلكترونيات مستعملة بحالة ممتازة</title>
+<meta name="description" content="مستعملينجو: متجر لبيع الموبايلات واللابتوب وأجهزة الألعاب والساعات الذكية المستعملة بحالة ممتازة وأسعار مناسبة. اطلب مباشرة عبر واتساب.">
+<meta name="theme-color" content="#1456d6">
+<link rel="icon" href="img/logo.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="splash" aria-hidden="true"><img src="img/logo.png" alt=""></div>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="./"><img src="img/logo.png" alt="مستعملينجو"><span>مستعملينجو</span></a>
+    <nav class="nav">
+      <a href="guide.html">نصائح الشراء</a>
+      <a href="about.html">من نحن</a>
+      <a href="contact.html">اتصل بنا</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>سوق الجمعة أون لاين</h1>
+    <p>منتجاتنا مش ناقصها حاجه غير انها تشتغل</p>
+    <div class="search"><input id="q" type="search" placeholder="ابحث عن منتج.." aria-label="بحث"></div>
+  </div>
+</section>
+
+<main class="wrap">
+  <div id="adTop" class="ad-slot" hidden></div>
+
+  <div class="bar">
+    <div id="cats" class="chips" role="tablist" aria-label="الأقسام"></div>
+    <div class="controls">
+      <select id="status" aria-label="حالة المنتج">
+        <option value="available">المتاح</option>
+        <option value="sold">تم بيعه</option>
+        <option value="all">الكل</option>
+      </select>
+      <select id="sort" aria-label="الترتيب">
+        <option value="new">الأحدث</option>
+        <option value="low">الأرخص</option>
+        <option value="high">الأغلى</option>
+      </select>
+    </div>
+  </div>
+
+  <div id="count" class="count" aria-live="polite"></div>
+  <div id="grid" class="grid"></div>
+  <div id="msg" class="msg" hidden></div>
+
+  <div id="adBottom" class="ad-slot" hidden></div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-links">
+      <a href="about.html">من نحن</a><a href="guide.html">نصائح الشراء</a><a href="contact.html">اتصل بنا</a>
+      <a href="privacy.html">سياسة الخصوصية</a><a href="terms.html">شروط الاستخدام</a>
+    </div>
+    <p>© <span id="year"></span> مستعملينجو — جميع الحقوق محفوظة</p>
+  </div>
+</footer>
+
+<div id="modal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="sheet">
+    <button class="x" id="mClose" aria-label="إغلاق">✕</button>
+    <div class="gal"><div id="mSold" class="soldbanner" hidden>تم البيع</div><img id="mImg" alt=""><div id="mThumbs" class="thumbs"></div></div>
+    <div class="info">
+      <h2 id="mTitle"></h2>
+      <div class="price" id="mPrice"></div>
+      <div class="tags" id="mTags"></div>
+      <p id="mDesc" class="desc"></p>
+      <a id="mBuy" class="buy" target="_blank" rel="noopener noreferrer">تواصل واتساب للشراء</a>
+      <small class="hint">الدفع والاستلام بعد معاينة المنتج.</small>
+    </div>
+  </div>
+</div>
+
+<div id="zoom" class="zoom" hidden role="dialog" aria-label="تكبير الصورة">
+  <div class="zstage"><img id="zImg" alt="" draggable="false"></div>
+  <div class="zbar">
+    <button type="button" id="zOut" aria-label="تصغير">−</button>
+    <button type="button" id="zIn" aria-label="تكبير">+</button>
+    <button type="button" id="zClose" aria-label="إغلاق">✕</button>
+  </div>
+</div>
+
+<div id="cookie" class="cookie" hidden>
+  <span>الموقع بيستخدم ملفات تعريف الارتباط لتحسين التجربة وعرض إعلانات. <a href="privacy.html">اعرف أكتر</a></span>
+  <button id="cookieOk">تمام</button>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
