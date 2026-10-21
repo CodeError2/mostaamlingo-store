@@ -4,7 +4,7 @@ window.STORE_CONFIG = {
   API_BASE: 'https://mostaamlingo-api.workcode86.workers.dev',
 
   // رقم واتساب البائع بالصيغة الدولية بدون + (مثال مصر: 201001234567)
-  WHATSAPP: '201000000000',
+  WHATSAPP: '201554491840',
 
   // الإيميل اللي بيظهر في صفحة اتصل بنا
   CONTACT_EMAIL: '',
