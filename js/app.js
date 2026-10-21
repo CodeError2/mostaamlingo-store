@@ -79,7 +79,7 @@
 
   function card(p) {
     const ph = h('div', { class: 'ph' });
-    if (p.images && p.images[0]) ph.append(h('img', { src: imgUrl(p.images[0]), alt: p.title, loading: 'lazy', decoding: 'async' }));
+    if (p.images && p.images[0]) ph.append(h('img', { src: p.thumb && /^data:image\/(webp|jpeg|png);base64,/.test(p.thumb) ? p.thumb : imgUrl(p.images[0]), alt: p.title, loading: 'lazy', decoding: 'async' }));
     else ph.append(h('div', { class: 'none', text: '📦' }));
     if (p.status === 'sold') ph.append(h('span', { class: 'ribbon', text: 'تم البيع' }));
     const el = h('button', { class: 'card' + (p.status === 'sold' ? ' sold' : ''), type: 'button' },
