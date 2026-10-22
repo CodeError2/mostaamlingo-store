@@ -19,11 +19,20 @@
     }
   }
 
+  const consent = {
+    get() {
+      try { if (localStorage.getItem('cookie_ok')) return true; } catch { /* ignore */ }
+      return /(?:^|; )cookie_ok=1/.test(document.cookie);
+    },
+    set() {
+      try { localStorage.setItem('cookie_ok', '1'); } catch { /* ignore */ }
+      document.cookie = 'cookie_ok=1; max-age=31536000; path=/; SameSite=Lax';
+    },
+  };
+
   // تنويه الكوكيز في كل الصفحات (الصفحة الرئيسية بيها تنويهها الخاص)
   if (!document.getElementById('cookie')) {
-    let ok = false;
-    try { ok = !!localStorage.getItem('cookie_ok'); } catch { /* ignore */ }
-    if (!ok) {
+    if (!consent.get()) {
       const box = document.createElement('div');
       box.className = 'cookie';
       const span = document.createElement('span');
@@ -34,7 +43,7 @@
       span.append(a);
       const b = document.createElement('button');
       b.textContent = 'تمام';
-      b.onclick = () => { box.remove(); try { localStorage.setItem('cookie_ok', '1'); } catch { /* ignore */ } };
+      b.onclick = () => { box.remove(); consent.set(); };
       box.append(span, b);
       document.body.append(box);
     }

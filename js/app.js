@@ -215,12 +215,15 @@
   if (['available', 'sold', 'all'].includes(qs)) { state.status = qs; $('status').value = qs; }
 
   /* ---------- cookie notice ---------- */
-  try {
-    if (!localStorage.getItem('cookie_ok')) $('cookie').hidden = false;
-  } catch { $('cookie').hidden = false; }
+  const consentGiven = () => {
+    try { if (localStorage.getItem('cookie_ok')) return true; } catch { /* ignore */ }
+    return /(?:^|; )cookie_ok=1/.test(document.cookie);
+  };
+  if (!consentGiven()) $('cookie').hidden = false;
   $('cookieOk').onclick = () => {
     $('cookie').hidden = true;
     try { localStorage.setItem('cookie_ok', '1'); } catch { /* ignore */ }
+    document.cookie = 'cookie_ok=1; max-age=31536000; path=/; SameSite=Lax';
   };
 
   /* ---------- AdSense (يشتغل تلقائي لما تملا ADSENSE_CLIENT في config.js) ---------- */
