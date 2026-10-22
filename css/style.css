@@ -171,3 +171,7 @@ select{background:#fff;border:1px solid var(--line);border-radius:10px;padding:7
   .nav{width:100%;justify-content:center;gap:16px;padding-bottom:4px}
   .nav a:first-child{display:inline}
 }
+
+.ship{font-size:.72rem;font-weight:600;color:var(--mute);white-space:nowrap}
+.price .ship{font-size:.9rem}
+.card.sold .ship,.price.struck .ship{text-decoration:none}

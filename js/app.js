@@ -84,7 +84,7 @@
     if (p.status === 'sold') ph.append(h('span', { class: 'ribbon', text: 'تم البيع' }));
     const el = h('button', { class: 'card' + (p.status === 'sold' ? ' sold' : ''), type: 'button' },
       ph,
-      h('div', { class: 'b' }, h('h3', { text: p.title }), h('div', { class: 'p', text: money(p.price) }), p.description ? h('p', { class: 'd', text: p.description }) : null, h('div', { class: 'm', text: `${p.condition} • ${p.category}` })));
+      h('div', { class: 'b' }, h('h3', { text: p.title }), h('div', { class: 'p' }, money(p.price), h('small', { class: 'ship', text: ' + مصاريف الشحن' })), p.description ? h('p', { class: 'd', text: p.description }) : null, h('div', { class: 'm', text: `${p.condition} • ${p.category}` })));
     el.onclick = () => openModal(p);
     return el;
   }
@@ -117,7 +117,7 @@
     main.hidden = !imgs.length;
     setMain(0);
     $('mTitle').textContent = p.title;
-    $('mPrice').textContent = money(p.price);
+    $('mPrice').replaceChildren(money(p.price), h('small', { class: 'ship', text: ' + مصاريف الشحن' }));
     $('mDesc').textContent = p.description || '';
     const sold = p.status === 'sold';
     $('mSold').hidden = !sold;
