@@ -131,10 +131,9 @@
       buy.className = 'buy off';
       buy.removeAttribute('href');
     } else {
-      const msg = `السلام عليكم 👋\nعايز أشتري:\n📦 ${p.title}\n💰 ${money(p.price)}\nلسه متاح؟`;
       buy.textContent = 'تواصل واتساب للشراء';
       buy.className = 'buy';
-      buy.href = `https://wa.me/${encodeURIComponent(C.WHATSAPP)}?text=${encodeURIComponent(msg)}`;
+      buy.href = `https://wa.me/${encodeURIComponent(C.WHATSAPP)}`;
     }
     $('modal').hidden = false;
     document.body.style.overflow = 'hidden';
