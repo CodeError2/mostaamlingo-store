@@ -7,7 +7,7 @@ window.STORE_CONFIG = {
   WHATSAPP: '201554491840',
 
   // الإيميل اللي بيظهر في صفحة اتصل بنا
-  CONTACT_EMAIL: '',
+  CONTACT_EMAIL: 'mstmlynjw@gmail.com',
 
   // رابط الموقع النهائي (للمشاركة)
   SITE_URL: 'https://codeerror2.github.io/mostaamlingo-store',
